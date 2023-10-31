@@ -3,12 +3,20 @@ import { NextResponse } from "next/server";
 import connectDB from "@/lib/dbConnect";
 import { CountryModel } from "@/models/Country";
 
-export async function GET(Null, { query }) {
+export async function GET(req) {
   await connectDB();
-  const page = (await query.p) || 1;
+  const searchParams = req.nextUrl.searchParams;
+
+  const page = (await searchParams.get("p")) || 1;
   const pageSize = 15;
 
   try {
+    //si se pasa "all" al query se llaman a todos
+    if (page === "all") {
+      const countries = await CountryModel.find({});
+      return NextResponse.json(countries, { status: 200 });
+    }
+
     const countries = await CountryModel.find({})
       .skip((page - 1) * pageSize)
       .limit(pageSize);
@@ -19,9 +27,9 @@ export async function GET(Null, { query }) {
   }
 }
 
+//funcion que se ejecuta una sola vez para llenar la Base de datos
 export async function POST() {
   await connectDB();
-
   try {
     const countriesInBD = await CountryModel.find({});
     if (countriesInBD.length > 249) {
@@ -52,6 +60,6 @@ export async function POST() {
     const countries = await Promise.all(promises);
     return NextResponse.json(countries, { status: 201 });
   } catch (error) {
-    return NextResponse.json({ message: err.message }, { status: 400 });
+    return NextResponse.json({ message: err.message }, { status: 500 });
   }
 }

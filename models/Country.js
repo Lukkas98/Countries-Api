@@ -1,10 +1,6 @@
 import mongoose from "mongoose";
 
 const countrySchema = new mongoose.Schema({
-  id: {
-    type: Number,
-    required: true,
-  },
   name: {
     type: String,
     required: true,
@@ -14,7 +10,7 @@ const countrySchema = new mongoose.Schema({
     required: true,
   },
   activities: [{
-    type: Schema.Types.ObjectId,
+    type: mongoose.Schema.Types.ObjectId,
     ref: 'Activity'
 }],
   image: {

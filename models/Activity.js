@@ -2,8 +2,8 @@ import mongoose from "mongoose";
 
 const activitySchema = new mongoose.Schema({
   id: {
-    type: Schema.Types.ObjectId,
-    default: Schema.Types.ObjectId,
+    type: mongoose.Schema.Types.ObjectId,
+    default: mongoose.Schema.Types.ObjectId,
     unique: true,
   },
   name: {
@@ -16,7 +16,7 @@ const activitySchema = new mongoose.Schema({
   },
   countries: [
     {
-      type: Schema.Types.ObjectId,
+      type: mongoose.Schema.Types.ObjectId,
       ref: "Country",
     },
   ],

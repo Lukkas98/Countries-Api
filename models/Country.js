@@ -14,7 +14,7 @@ const countrySchema = new mongoose.Schema({
     required: true,
   },
   activities: [{
-    type: Schema.Types.ObjectId,
+    type: mongoose.Schema.Types.ObjectId,
     ref: 'Activity'
 }],
   image: {

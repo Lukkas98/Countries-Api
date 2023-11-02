@@ -3,7 +3,8 @@ import Image from "next/image";
 const url = process.env.URL_FRONT;
 
 const Cards = async ({ pag }) => {
-  const data = (await axios(`${url}/api/countries?p=${pag}`)).data;
+  let data = {}
+  data = (await axios(`${url}/api/countries?p=${pag}`)).data;
 
   return (
     <div className="flex flex-wrap justify-around gap-5 my-10">

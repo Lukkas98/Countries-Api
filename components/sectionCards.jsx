@@ -6,7 +6,7 @@ const SectionCards = ({ pag }) => {
   return (
     <div className="w-full grid justify-items-center">
       <div className="flex gap-3">
-        <Paginate />
+        <Paginate pag={pag} />
       </div>
       <Cards pag={pag} />
     </div>

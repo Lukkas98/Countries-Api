@@ -15,7 +15,7 @@ const Paginate = ({pag = 1}) => {
       <Link
         key={i}
         className={`${
-          actualPage === i ? "bg-red-400" : "bg-red-100"
+          actualPage === i ? "bg-orange-700 text-white" : "bg-orange-300"
         } px-2 py-1 rounded-md`}
         onClick={()=> setActualPage(i)}
         href={`${url}/home?p=${i}`}
@@ -24,7 +24,7 @@ const Paginate = ({pag = 1}) => {
       </Link>
     );
   }
-  return <>{buttons}</>;
+  return <div className="flex flex-wrap gap-3 justify-center">{buttons}</div>;
 };
 
 export default Paginate;

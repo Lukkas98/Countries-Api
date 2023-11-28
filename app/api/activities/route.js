@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import connectDB from "@/lib/dbConnect";
 import { ActivityModel } from "@/models/Activity";
 import { CountryModel } from "@/models/Country";
+import validatorActivity from "./validatorActivity";
 
 export async function GET() {
   await connectDB();
@@ -22,16 +23,20 @@ export async function GET() {
 
 export async function POST(req) {
   await connectDB();
-  const { name, description, countries } = await req.json();
+  const { name, season, countries, difficulty, duration} = await req.json();
 
   try {
-    if (!name || !description || countries.length <= 0) {
-      return NextResponse.json({ message: "mising data" }, { status: 500 });
+    const isValidate = validatorActivity(name, season, countries, difficulty, duration)
+    
+    if (typeof isValidate !== "boolean") {
+      throw new Error(isValidate)
     }
 
     const activity = await ActivityModel.create({
       name,
-      description,
+      season,
+      difficulty,
+      duration,
       countries,
     });
     const activityId = activity._id;

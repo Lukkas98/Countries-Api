@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose, { Schema } from "mongoose";
 
 const activitySchema = new mongoose.Schema({
   name: {
@@ -11,7 +11,7 @@ const activitySchema = new mongoose.Schema({
   },
   countries: [
     {
-      type: mongoose.Schema.Types.ObjectId,
+      type: Schema.Types.ObjectId,
       ref: "Country",
     },
   ],

@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose, { Schema } from "mongoose";
 
 const countrySchema = new mongoose.Schema({
   name: {
@@ -9,10 +9,12 @@ const countrySchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
-  activities: [{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Activity'
-}],
+  activities: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Activity",
+    },
+  ],
   image: {
     type: String,
     required: true,

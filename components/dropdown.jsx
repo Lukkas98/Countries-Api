@@ -17,7 +17,6 @@ const Dropdown = ({ dataForm, setDataForm, countries }) => {
     ]);
     setIsOpen(false);
   };
-  console.log(selectedCountries);
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
@@ -68,10 +67,11 @@ const Dropdown = ({ dataForm, setDataForm, countries }) => {
 };
 export default Dropdown;
 
+
 function PanelOfCountries({ options, handleOptionClick }) {
   return (
     <div
-      className="origin-top-right absolute right-0 mt-2 w-full rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5"
+      className="origin-top-right absolute right-0 mt-2 w-full rounded-md shadow-lg bg-stone-300 ring-1 ring-black ring-opacity-5"
       role="menu"
       aria-orientation="vertical"
       aria-labelledby="options-menu"
@@ -80,7 +80,7 @@ function PanelOfCountries({ options, handleOptionClick }) {
         {options.map((option) => (
           <div
             key={option._id}
-            className="w-full block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 cursor-pointer"
+            className="w-full block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 cursor-pointer transition-all duration-300"
             role="menuitem"
             onClick={() => handleOptionClick(option)}
           >

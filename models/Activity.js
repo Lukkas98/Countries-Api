@@ -1,14 +1,26 @@
 import mongoose, { Schema } from "mongoose";
 
+const seasonEnum = ['Spring', 'Summer', 'Autumn', 'Winter'];
+
 const activitySchema = new mongoose.Schema({
   name: {
     type: String,
     required: true,
   },
-  description: {
+  season: {
     type: String,
     required: true,
+    enum: seasonEnum,
   },
+  difficulty: {
+    type: Number,
+    required: true,
+  },
+  duration: {
+    type: Number,
+    required: true,
+  },
+
   countries: [
     {
       type: Schema.Types.ObjectId,

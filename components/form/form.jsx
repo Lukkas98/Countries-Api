@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Dropdown from "./dropdownCountries";
 import Validate from "./validate";
 import SeasonsPicker from "./seasonsPicker";
+import axios from "axios";
 
 const Form = ({ countries }) => {
   const obj = {
@@ -47,10 +48,12 @@ const Form = ({ countries }) => {
 
   const handleSubmit = async (e)=>{
     e.preventDefault();
+    const countryIds = dataForm.countries.map((country) => country.id)
     try {
-      
+      const response = await axios.post("/api/activities", {...dataForm, countries:countryIds})
+      console.log("response: ", response);
     } catch (error) {
-      
+      console.log(error);
     }
 
   }

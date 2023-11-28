@@ -1,3 +1,5 @@
+const regexText = /^[a-zA-Z]+$/;
+
 const validatorActivity = (name, season, countries, difficulty, duration) => {
 
   if (!name.length) return "You must enter a name";

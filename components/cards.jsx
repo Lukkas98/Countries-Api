@@ -17,8 +17,9 @@ const Cards = async ({ pag }) => {
           key={i}
         >
           <h6>{country.name}</h6>
-          <div className="w-full h-[100px] relative">
+          <div className="w-full h-[100px] relative z-20">
             <Image
+              className="z-10"
               src={country.image}
               fill={true}
               alt={`${country.name} flag`}

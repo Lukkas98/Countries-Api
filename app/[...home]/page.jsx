@@ -1,3 +1,4 @@
+import InputSearch from "@/components/inputsSearch/inputSearch";
 import SectionCards from "@/components/sectionCards";
 import Link from "next/link";
 
@@ -13,10 +14,7 @@ const HomePage = ({ searchParams }) => {
           Salir
         </Link>
         <Link href={"/create"} >Create Activity</Link>
-        <div className="flex gap-2">
-          <input type="text" name="" id="" />
-          <span className="px-2 py-1 bg-slate-500 rounded-lg">Lupa</span>
-        </div>
+        <InputSearch />
       </nav>
       <section className="flex flex-wrap justify-evenly gap-5 my-10 mx-6">
         <SectionCards pag={pag}/>

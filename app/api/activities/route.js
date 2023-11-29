@@ -24,7 +24,6 @@ export async function GET() {
 export async function POST(req) {
   await connectDB();
   const { name, season, countries, difficulty, duration} = await req.json();
-  console.log(countries);
 
   try {
     const isValidate = validatorActivity(name, season, countries, difficulty, duration)
